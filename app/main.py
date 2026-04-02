@@ -2,7 +2,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.routers import  health, users, explore,item,opportunity2,organization2,profile2,auth3,general_organization,events,email
+#from app.routers import  health, users, explore,item,opportunity2,organization2,profile2,auth3,general_organization,events,email
+#from app.routers import health, users, explore, opportunity2, organization2, profile2, auth3, general_organization, events, email
+from app.routers import health, users, opportunity2, organization2, profile2, auth3, general_organization, events, email
 from app.db import db, engine
 from sqlmodel import SQLModel
 
@@ -31,7 +33,7 @@ app.add_middleware(
 # routers
 app.include_router(health.router)       # GET /        # /auth/*
 app.include_router(users.router)
-app.include_router(explore.router)
+#app.include_router(explore.router)
 app.include_router(organization2.router)
 app.include_router(opportunity2.router)
 app.include_router(profile2.router)
@@ -39,13 +41,15 @@ app.include_router(auth3.router)
 app.include_router(general_organization.router)
 app.include_router(events.router)
 app.include_router(email.router)
-@app.get("/debug/db")
-def debug_db():
-    try:
-        return {
-            "db_name": db.name,
-            "collections": db.list_collection_names()
-        }
-    except Exception as e:
-        return {"error": str(e)}
-app.include_router(item.router)
+
+# MongoDB debug endpoint disabled - MongoDB not in use
+# @app.get("/debug/db")
+# def debug_db():
+#     try:
+#         return {
+#             "db_name": db.name,
+#             "collections": db.list_collection_names()
+#         }
+#     except Exception as e:
+#         return {"error": str(e)}
+#app.include_router(item.router)

@@ -12,15 +12,18 @@ import os
 # --------------------------
 # MongoDB setup
 # --------------------------
-client = MongoClient(settings.MONGO_URI)
+# MongoDB setup (disabled - not in use)
+# client = MongoClient(settings.MONGO_URI)
 
-# Specify database and collections
-db = client["BitcoinCultureHub"]
-collection = db["users"]
-explore = db["explore"]
-waitlist = db["waitlist"]
-fs = gridfs.GridFS(db, collection="images")
-bookmark_collection = db["bookmarks"]
+# # Specify database and collections
+# db = client["BitcoinCultureHub"]
+# collection = db["users"]
+# explore = db["explore"]
+# waitlist = db["waitlist"]
+# fs = gridfs.GridFS(db, collection="images")
+# bookmark_collection = db["bookmarks"]
+
+db = None  # MongoDB not in use
 
 # --------------------------
 # MySQL / SQLModel setup
