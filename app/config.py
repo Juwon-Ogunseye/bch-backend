@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
-
 class Settings(BaseModel):
     print(os.getenv("MONGO_URI"))
     SECRET_KEY: str = os.getenv("SECRET_KEY", "secret")
